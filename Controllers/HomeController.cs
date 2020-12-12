@@ -1,21 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MVCCoreAngular.Data;
 using MVCCoreAngular.Models;
-using System;
-using System.Collections.Generic;
+using MVCCoreAngular.Services;
+using MVCCoreAngular.ViewModels;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MVCCoreAngular.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IMailServices _mailService;
+        private readonly IRepository repository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IMailServices mailService, IRepository repository)
         {
-            _logger = logger;
+            _mailService = mailService;
+            this.repository = repository;
         }
 
         public IActionResult Index()
@@ -23,9 +24,30 @@ namespace MVCCoreAngular.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet("contact")]
+        [Authorize]
+        public IActionResult Contact()
         {
             return View();
+        }
+
+        [HttpPost("contact")]
+        public IActionResult Contact(ContactViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Send the email
+                _mailService.SendMessage("ommalor@gmail.com", model.Subject, $"From: {model.Name} - {model.Email} Message: {model.Message}");
+                ViewBag.UserMessage = "Mail Sent";
+                ModelState.Clear();
+            }
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            var results = repository.GetAllProducts();
+            return View(results);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
