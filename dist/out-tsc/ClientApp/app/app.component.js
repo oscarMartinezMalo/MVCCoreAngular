@@ -8,8 +8,7 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     Component({
         selector: 'app-root',
-        template: `
-    <h1>Hello</h1>  `,
+        template: `<router-outlet></router-outlet>`,
         styles: []
     })
 ], AppComponent);

@@ -3,21 +3,20 @@
 @{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<h1 style="color:whitesmoke">@ViewData["Title"]</h1>
 
-<p>Count: @Model.Count()</p>
+<p style="color:whitesmoke">Count: @Model.Count()</p>
 
-<div class="row row-cols-1 row-cols-md-2">
+<div class="row">
 
     @foreach (var p in Model)
     {
-        <div class="col mb-4">
+        <div class="col col-4 mb-4">
             <div class="card">
                 <img src=@("/img/" + @p.ArtId + ".jpg") class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">@p.Title</h4>
                     <h5 class="card-title">$@p.Price</h5>
-
                     <p class="card-text">@p.ArtDescription</p>
                 </div>
             </div>

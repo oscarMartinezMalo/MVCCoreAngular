@@ -12,5 +12,6 @@ namespace MVCCoreAngular.Data
         void AddEntity(object model);
         IEnumerable<Order> GetAllOrders(bool includeItems);
         IEnumerable<Order> GetAllOrdersByUser(string userName, bool includeItems);
+        void AddOrder(Order newOrder);
     }
 }

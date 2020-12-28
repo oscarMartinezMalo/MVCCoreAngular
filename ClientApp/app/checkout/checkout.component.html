@@ -1,0 +1,62 @@
+
+<div class="alert alert-danger alert-link" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9 p-0">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="col-auto"></th>
+                        <th scope="col" class="col-auto">Product</th>
+                        <th scope="col" class="col-auto">Description</th>
+                        <th scope="col" class="col-auto">Quantity</th>
+                        <th scope="col" class="col-auto">One Item Price</th>
+                        <th scope="col" class="col-auto"> Price </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  class="text-left" *ngFor="let o of data.order.items">
+                        <td class="col-auto">
+                            <img class="img-fluid img-thumbnail" src="/img/{{o.ProductArtId}}.jpg" [alt]="o.productTitle" style="height: auto; max-width: 80px">
+                        </td>
+                        <td class="col-auto">{{o.productCategory}}</td>
+                        <td class="col-auto">{{o.productTitle}}</td>
+                        <td class="col-auto">{{o.quantity}}</td>
+                        <td class="col-auto">{{o.unitPrice | currency:"USD":true}}</td>
+                        <td class="col-auto">{{(o.unitPrice * o.quantity) | currency:"USD":true}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col p-0 card ml-1" style="min-width:206px">
+
+                    <table class="table" style="width: 200px; margin:auto">
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>{{data.order.subtotal | currency:"USD":true}}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td>{{data.getShippingPrice() | currency:"USD":true}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{(data.order.subtotal + data.getShippingPrice()) | currency:"USD":true}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-success" (click) ="onCheckout()">Purchase</button>
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/']" class="btn btn-danger">Cancel</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+        </div>
+    </div>
+</div>

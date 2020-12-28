@@ -58,6 +58,27 @@ namespace MVCCoreAngular.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpGet("all")]
+        public IActionResult GetAll(bool includeItems = true)
+        {
+            try
+            {
+                var orders = repository.GetAllOrders(includeItems);
+
+                if (orders != null) return Ok(mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(orders));
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Failed to get Orders {ex}");
+                return BadRequest("Failed to get orders");
+            }
+        }
+
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
@@ -94,7 +115,7 @@ namespace MVCCoreAngular.Controllers
                     var currentUser = await userManager.FindByNameAsync(userName);
                     newOrder.User = currentUser;
 
-                    repository.AddEntity(newOrder);
+                    repository.AddOrder(newOrder);
                     if (repository.SaveChanges())
                     {
                         return Created($"/api/order/{newOrder.Id}", mapper.Map<Order, OrderViewModel>(newOrder));

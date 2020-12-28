@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVCCoreAngular.Data;
 using MVCCoreAngular.Models;
 using MVCCoreAngular.Services;
@@ -25,8 +24,15 @@ namespace MVCCoreAngular.Controllers
         }
 
         [HttpGet("contact")]
-        [Authorize]
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+
+        [HttpGet("shop")]
+        //[Authorize]
+        public IActionResult Shop()
         {
             return View();
         }

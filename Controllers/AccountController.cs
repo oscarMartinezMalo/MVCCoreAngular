@@ -42,6 +42,7 @@ namespace MVCCoreAngular.Controllers
             return View();
         }
 
+        // Login MVC
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -58,12 +59,44 @@ namespace MVCCoreAngular.Controllers
                     }
                     else
                     {
-                        RedirectToAction("Home", "Index");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
             }
 
             ModelState.AddModelError("", "Failed to login");
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // Register MVC
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityUser user = new IdentityUser
+                {
+                    Email = model.Email,
+                    UserName = model.Email
+                };
+
+                var result = await userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
             return View();
         }
 
@@ -74,6 +107,7 @@ namespace MVCCoreAngular.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // Get Token to used in Angular
         [HttpPost]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel model)
         {

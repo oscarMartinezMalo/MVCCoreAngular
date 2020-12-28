@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVCCoreAngular.Data;
@@ -10,6 +12,7 @@ using System.Security.Claims;
 
 namespace MVCCoreAngular.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/order/{orderId}/items")]
     public class OrderItemController : Controller
     {

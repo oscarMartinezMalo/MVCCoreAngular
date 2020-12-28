@@ -3,16 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShopComponent } from './shop/shop.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { DataService } from './shared/dataService';
+import { HttpClientModule } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShopComponent,
+    ProductListComponent,
+    CartComponent,
+    CheckoutComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+      BrowserModule,
+      HttpClientModule,
+      AppRoutingModule,
+      FormsModule
   ],
-    providers: [],
+    providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

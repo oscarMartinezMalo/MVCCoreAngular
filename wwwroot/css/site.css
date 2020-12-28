@@ -69,3 +69,68 @@ body {*/
   white-space: nowrap;
   line-height: 60px;*/ /* Vertically center the text there */
 /*}*/
+
+:root {
+    --main-bg-color: #4A4A4A;
+    --secondary-bg-color: #545454;
+    --red-color: #EA3636;
+}
+
+* {
+    font-family: 'Rufina', serif;
+}
+
+body {
+    height: 100vh;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    height: 100%;
+}
+
+
+html, body {
+    background: var(--main-bg-color); /* Old browsers */
+    background: -moz-linear-gradient(left, var(--main-bg-color) 0%, var(--main-bg-color) 50%, var(--secondary-bg-color) 50%, var(--secondary-bg-color) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,var(--main-bg-color)), color-stop(50%,var(--main-bg-color)), color-stop(50%,var(--secondary-bg-color)), color-stop(100%,var(--secondary-bg-color))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, var(--main-bg-color) 0%,var(--main-bg-color) 50%,var(--secondary-bg-color) 50%,var(--secondary-bg-color) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, var(--main-bg-color) 0%,var(--main-bg-color) 50%,var(--secondary-bg-color) 50%,var(--secondary-bg-color) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, var(--main-bg-color) 0%,var(--main-bg-color) 50%,var(--secondary-bg-color) 50%,var(--secondary-bg-color) 100%); /* IE10+ */
+    background: linear-gradient(to right, var(--main-bg-color) 0%,var(--main-bg-color) 50%,var(--secondary-bg-color) 50%,var(--secondary-bg-color) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='var(--main-bg-color)', endColorstr='var(--secondary-bg-color)',GradientType=1 ); /* IE6-9 */
+}
+
+a.nav-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: white !important;
+}
+
+a.nav-link:hover {
+    color: var(--red-color) !important;
+}
+
+nav.navbar {
+    background-color: transparent !important;
+    /*padding: .5rem 10vw !important;*/
+}
+
+.border-bottom {
+    border-bottom: none !important;
+}
+
+.container-fluid {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+img.card-img-top {
+    height: 200px !important;
+    object-fit: cover;
+}
+
+div#card {
+    min-height: 400px;
+    background-color: whitesmoke;
+}

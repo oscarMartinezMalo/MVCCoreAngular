@@ -1,13 +1,86 @@
-﻿@*@{
-        ViewData["Title"] = "Home Page";
-    }*@
-
-@section Scripts {
-    <script src="~/clientapp/runtime.js"></script>
-    <script src="~/clientapp/polyfills.js"></script>
-    <script src="~/clientapp/styles.js"></script>
-    <script src="~/clientapp/vendor.js"></script>
-    <script src="~/clientapp/main.js"></script>
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
 
-<app-root></app-root>
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>Photo</h1>
+        <p class="small-text">
+            <span>Photos for Everyone </span><br />
+            More than 200 United States Landmarks images
+            in Stock
+        </p>
+    </div>
+    <div class="hero-camera">
+        <img class="camera" src='@Url.Content("../img/systemImages/Camera.png")' />
+        <a type="button" class="btn btn-store" asp-controller="Home" asp-action="Shop">Shop</a>
+    </div>
+</div>
+
+
+<style>
+    .btn.btn-store {
+        margin-left: 6%;
+        margin-top: 20px;
+        border-radius: 20px;
+        margin-left: 6%;
+        margin-top: 20px;
+        border-radius: 20px;
+        color: white;
+        background: #dc3545a3;
+        box-shadow: 0 0 0 0.2rem var(--red-color);
+        ;
+    }
+
+    /* Place text in the middle of the image */
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-55%, -50%);
+        color: white;
+    }
+
+    .hero-camera {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-53%, -50%);
+        color: white;
+        width: 28vw;
+    }
+
+    .camera {
+        width: 100%;
+    }
+
+    .hero-text > h1 {
+        font-weight: bold;
+        font-size: 28vw;
+        font-weight: 100;
+        color: var(--primary-color);
+        margin: 0px 0px 0px 0px;
+        line-height: 0.85em;
+        font-stretch: condensed;
+    }
+
+    .hero-text > h3 {
+        font-weight: 200;
+        color: var(--primary-color);
+        text-align: left;
+        margin: 0px 0px 0px 1%;
+    }
+
+    p.small-text {
+        text-align: start;
+        width: 210px;
+        margin-left: 5%;
+        margin-top: 10px;
+    }
+
+        p.small-text > span {
+            color: var(--red-color);
+        }
+</style>
