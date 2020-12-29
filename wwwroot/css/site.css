@@ -134,3 +134,14 @@ div#card {
     min-height: 400px;
     background-color: whitesmoke;
 }
+
+.navbar-light .navbar-toggler {
+    background-color: darkgrey;
+}
+
+    @media only screen and (max-width: 992px) {
+        nav.navbar {
+            background-color: var(--main-bg-color) !important;
+            z-index: 10;
+        }
+    }
