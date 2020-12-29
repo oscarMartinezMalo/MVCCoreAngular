@@ -9,10 +9,10 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="col-auto"></th>
-                        <th scope="col" class="col-auto">Product</th>
+                        <th scope="col" class="col-auto d-none d-sm-table-cell">Product</th>
                         <th scope="col" class="col-auto">Description</th>
-                        <th scope="col" class="col-auto">Quantity</th>
-                        <th scope="col" class="col-auto">One Item Price</th>
+                        <th scope="col" class="col-auto d-none d-sm-table-cell">Quantity</th>
+                        <th scope="col" class="col-auto d-none d-sm-table-cell">One Item Price</th>
                         <th scope="col" class="col-auto"> Price </th>
                     </tr>
                 </thead>
@@ -21,16 +21,16 @@
                         <td class="col-auto">
                             <img class="img-fluid img-thumbnail" src="/img/{{o.ProductArtId}}.jpg" [alt]="o.productTitle" style="height: auto; max-width: 80px">
                         </td>
-                        <td class="col-auto">{{o.productCategory}}</td>
+                        <td class="col-auto d-none d-sm-table-cell">{{o.productCategory}}</td>
                         <td class="col-auto">{{o.productTitle}}</td>
-                        <td class="col-auto">{{o.quantity}}</td>
-                        <td class="col-auto">{{o.unitPrice | currency:"USD":true}}</td>
+                        <td class="col-auto d-none d-sm-table-cell">{{o.quantity}}</td>
+                        <td class="col-auto d-none d-sm-table-cell">{{o.unitPrice | currency:"USD":true}}</td>
                         <td class="col-auto">{{(o.unitPrice * o.quantity) | currency:"USD":true}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col p-0 card ml-1" style="min-width:206px">
+        <div class="col p-0 card ml-1" style="min-width:220px">
 
                     <table class="table" style="width: 200px; margin:auto">
                         <tbody>
