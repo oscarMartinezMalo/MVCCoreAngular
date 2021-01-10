@@ -82,8 +82,10 @@ namespace MVCCoreAngular
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             //app.UseDefaultFiles();  // Set wwwroot/index.html as the default route
+            //app.UseFileServer();
+
             app.UseStaticFiles();
             app.UseNodeModules();
 
